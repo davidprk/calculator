@@ -71,6 +71,10 @@ body {
     background-color: lightblue;
 }
 
+.equals {
+    background-color: orange;
+}
+
 .operator {
     background-color: lightsalmon;
 }
