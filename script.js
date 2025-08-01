@@ -33,6 +33,7 @@ function operate(operand1, operand2, operator) {
 // Display logic
 //
 const screenText = document.querySelector(".screen .text");
+const screenEquation = document.querySelector(".screen .equation");
 const digitBtns = document.querySelectorAll(".symbol");
 
 let currentInput = "0";
@@ -72,7 +73,9 @@ clearBtn.addEventListener("click", () => {
 
 updateScreen();
 
+//
 // Operation logic
+//
 let operand1 = null;
 let operand2 = null;
 let operator = "";
@@ -99,7 +102,12 @@ operatorBtns.forEach(button => {
         if (operator === "") { // No calculation to perform
             operand1 = currentInput;
             operator = clickedOperator;
-            currentInput = 
+            currentInput += operator;
+
+            updateScreen();
+        }
+        else { // Operator is non-empty string, chaining operation
+
         }
     });
 });
