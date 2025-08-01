@@ -15,14 +15,23 @@ function divide(a, b) {
 }
 
 function operate(operand1, operand2, operator) {
-    
+    if (operator === "+") {
+        return add(operand1, operand2);
+    }
+    else if (operator === "-") {
+        return subtract(operand1, operand2);
+    }
+    else if (operator === "*") {
+        return multiply(operand1, operand2);
+    }
+    else {
+        return divide(operand1, operand2);
+    }
 }
 
-let operand1;
-let operand2;
-let operator;
-
+//
 // Display logic
+//
 const screenText = document.querySelector(".screen .text");
 const digitBtns = document.querySelectorAll(".symbol");
 
@@ -42,8 +51,8 @@ digitBtns.forEach(button => {
             currentInput += value;
         }
         updateScreen();
-    })
-})
+    });
+});
 
 const deleteBtn = document.querySelector(".delete");
 
@@ -59,6 +68,38 @@ clearBtn.addEventListener("click", () => {
     currentInput = "0";
 
     updateScreen();
-})
+});
 
 updateScreen();
+
+// Operation logic
+let operand1 = null;
+let operand2 = null;
+let operator = "";
+
+const operatorBtns = document.querySelectorAll(".operator");
+
+operatorBtns.forEach(button => {
+    button.addEventListener("click", (e) => {
+        let clickedOperator = e.target.className;
+        switch (clickedOperator) {
+            case "add":
+                clickedOperator = "+";
+                break;
+            case "subtract":
+                clickedOperator = "-";
+                break;
+            case "multiply":
+                clickedOperator = "*";
+                break;
+            default:
+                clickedOperator = "/";
+        }
+
+        if (operator === "") { // No calculation to perform
+            operand1 = currentInput;
+            operator = clickedOperator;
+            currentInput = 
+        }
+    });
+});
