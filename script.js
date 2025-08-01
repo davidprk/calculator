@@ -51,10 +51,15 @@ digitBtns.forEach(button => {
         if (currentInput === "0" && value !== ".") {
             currentInput = value;
         }
+        else if (currentEquation.includes("=")) {
+            currentInput = value;
+            currentEquation = "";
+        }
         else {
             currentInput += value;
         }
         updateScreen();
+        updateEquation();
     });
 });
 
@@ -129,4 +134,4 @@ equalBtn.addEventListener("click", () => {
 
     updateScreen();
     updateEquation();
-});
+}); 
