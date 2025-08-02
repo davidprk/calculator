@@ -11,7 +11,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return +a / +b;
+    return +a / +b;   
 }
 
 function operate(operand1, operand2, operator) {
@@ -23,7 +23,7 @@ function operate(operand1, operand2, operator) {
         case "*":
             return multiply(operand1, operand2);
         default:
-            return divide(operand1, operand2);
+            return Math.round(divide(operand1, operand2) * 100) / 100;
     }
 }
 
@@ -125,13 +125,17 @@ const equalBtn = document.querySelector(".equals");
 
 equalBtn.addEventListener("click", () => {
     operand2 = currentInput;
-    currentInput = operate(operand1, operand2, operator);
-    currentEquation += operand2 + "=";
 
-    operand1 = null;
-    operand2 = null;
-    operator = "";
+    // Check for operation validity
+    if (operand1 !== null && operand2 !== "" && operator !== "") {
+        currentInput = operate(operand1, operand2, operator);
+        currentEquation += operand2 + "=";
 
-    updateScreen();
-    updateEquation();
+        operand1 = null;
+        operand2 = null;
+        operator = "";
+
+        updateScreen();
+        updateEquation();
+    }
 }); 
